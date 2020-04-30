@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ItemService {
+  private apiUrl = environment.apiUrl;
+  imgDisplayUrl = environment.baseUrl;
+  constructor(private http:HttpClient) { }
+
+  getItemList() {
+    return this.http.get(this.apiUrl + 'api/items');
+  }
+
+  getItem(id) {
+    return this.http.get(this.apiUrl + 'api/items/' + id);
+  }
+
+  deleteItem(id) {
+    return this.http.delete(this.apiUrl + 'api/items/' + id);
+  }
+}

@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <div *ngIf="item">
+      <a routerLink="/item/{{item._id}}">
+        <div>subject: {{ item.subject }}</div>
+        <div>description: {{ item.description }}</div>
+        <div>status: {{ item.status }}</div>
+        <div>goalDate: {{ item.goalDate | date: "MM/dd/yyyy" }}</div>
+        <div>list: {{ item.list }}</div>
+        <div>createdAt: {{ item.createdAt | date: "MM/dd/yyyy" }}</div>
+        <div>updateAt: {{ item.updatedAt | date: "MM/dd/yyyy" }}</div>
+        <div>filename: {{ item.filename }}</div>
+        <img class="card-text" [src]="item.displayUrl">
+        <button (click)="deleteItem(item._id)">delete</button>
+      </a>
+    </div>
+  </div>
+</div>
