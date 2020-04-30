@@ -1,1 +1,11 @@
-<p>item-detail works!</p>
+<div *ngIf="item">
+  <h3>{{ item.subject }}</h3>
+  <div>goalDate: {{ item.goalDate | date: "MM/dd/yyyy" }}</div>
+  <div>description: {{ item.description }}</div>
+  <div>createdAt: {{ item.createdAt | date: "MM/dd/yyyy" }}</div>
+  <div>updateAt: {{ item.updatedAt | date: "MM/dd/yyyy" }}</div>
+
+  <div>{{ item.filename }}</div>
+  <img class="card-text" [src]="item.displayUrl">
+  <button (click)="goBack()">go back</button>
+</div>

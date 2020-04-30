@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, Output } from '@angular/core';
 import { ItemService } from 'src/app/services/item/item.service';
 
 @Component({

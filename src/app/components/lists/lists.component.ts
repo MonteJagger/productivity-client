@@ -17,6 +17,5 @@ export class ListsComponent implements OnInit {
     this.itemService.getItemList()
       .subscribe(items => this.itemList = items);
     this.baseUrl = this.itemService.imgDisplayUrl;
-    console.log(this.baseUrl);
   }
 }
