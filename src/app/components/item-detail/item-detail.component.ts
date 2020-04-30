@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ItemDetailComponent implements OnInit {
   item: any;
   imgUrl: String;
+  id = this.route.snapshot.paramMap.get('id');
+
   constructor(
     private itemService: ItemService,
     private route: ActivatedRoute,
@@ -21,12 +23,17 @@ export class ItemDetailComponent implements OnInit {
   }
 
   getItem() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.itemService.getItem(id).subscribe(item => {
+    this.itemService.getItem(this.id).subscribe(item => {
       this.item = item;
       if (this.item.displayUrl) {
         this.imgUrl = this.itemService.imgDisplayUrl + this.item.displayUrl;
       }
+    });
+  }
+
+  deleteItem() {
+    this.itemService.deleteItem(this.id).subscribe(item => {
+      this.router.navigate(['/lists']);
     });
   }
 
