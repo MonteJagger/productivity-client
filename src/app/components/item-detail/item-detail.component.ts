@@ -11,6 +11,7 @@ export class ItemDetailComponent implements OnInit {
   item: any;
   imgUrl: String;
   id = this.route.snapshot.paramMap.get('id');
+  editMode: boolean;
 
   constructor(
     private itemService: ItemService,
@@ -39,5 +40,16 @@ export class ItemDetailComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/lists']);
+  }
+
+  editItem() {
+    this.editMode = true;
+  }
+
+  submitForm(data) {
+    this.itemService.updateItem(this.id, data).subscribe(item => {
+      this.item = Object.assign(this.item, data);
+      this.editMode = false;
+    });
   }
 }
