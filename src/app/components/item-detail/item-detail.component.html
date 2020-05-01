@@ -9,7 +9,7 @@
   <div>{{ item.filename }}</div>
   <img class="card-text" [src]="item.displayUrl">
   <button (click)="goBack()">go back</button>
-  <button (click)="editItem()">edit</button>
+  <button (click)="setEditMode(true)">edit</button>
   <button (click)="deleteItem()">delete</button>
 </div>
 

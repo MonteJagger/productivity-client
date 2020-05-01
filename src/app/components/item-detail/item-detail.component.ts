@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ItemService } from 'src/app/services/item/item.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,9 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./item-detail.component.scss']
 })
 export class ItemDetailComponent implements OnInit {
+  id = this.route.snapshot.paramMap.get('id');
   item: any;
   imgUrl: String;
-  id = this.route.snapshot.paramMap.get('id');
   editMode: boolean;
 
   constructor(
@@ -23,6 +23,7 @@ export class ItemDetailComponent implements OnInit {
     this.getItem();
   }
 
+  // read item with service
   getItem() {
     this.itemService.getItem(this.id).subscribe(item => {
       this.item = item;
@@ -32,6 +33,15 @@ export class ItemDetailComponent implements OnInit {
     });
   }
 
+  // update item with service
+  submitForm(data) {
+    this.itemService.updateItem(this.id, data).subscribe(item => {
+      this.item = Object.assign(this.item, data);
+      this.setEditMode(false);
+    });
+  }
+
+  // delete item with service
   deleteItem() {
     this.itemService.deleteItem(this.id).subscribe(item => {
       this.router.navigate(['/lists']);
@@ -42,14 +52,7 @@ export class ItemDetailComponent implements OnInit {
     this.router.navigate(['/lists']);
   }
 
-  editItem() {
-    this.editMode = true;
-  }
-
-  submitForm(data) {
-    this.itemService.updateItem(this.id, data).subscribe(item => {
-      this.item = Object.assign(this.item, data);
-      this.editMode = false;
-    });
+  setEditMode(value: boolean) {
+    this.editMode = value;
   }
 }
