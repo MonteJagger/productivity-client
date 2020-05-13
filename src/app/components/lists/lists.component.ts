@@ -11,11 +11,16 @@ export class ListsComponent implements OnInit {
   title = 'productivity-client';
   itemList = null;
   baseUrl = null;
+
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+    this.updateList();
+    this.baseUrl = this.itemService.imgDisplayUrl;
+  }
+
+  updateList() {
     this.itemService.getItemList()
       .subscribe(items => this.itemList = items);
-    this.baseUrl = this.itemService.imgDisplayUrl;
   }
 }

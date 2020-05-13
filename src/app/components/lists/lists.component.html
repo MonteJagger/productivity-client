@@ -1,5 +1,8 @@
+<add-item (refreshListOutput)="updateList()"></add-item>
+<hr>
 <item
   *ngFor="let itemObj of itemList"
   [item]="itemObj"
   [baseUrl]="baseUrl"
+
   ></item>

@@ -10,6 +10,11 @@ export class ItemService {
   imgDisplayUrl = environment.baseUrl;
   constructor(private http:HttpClient) { }
 
+  createItem(formData: FormData) {
+    console.log(formData);
+    return this.http.post(this.apiUrl + 'api/items', formData);
+  }
+
   getItemList() {
     return this.http.get(this.apiUrl + 'api/items');
   }

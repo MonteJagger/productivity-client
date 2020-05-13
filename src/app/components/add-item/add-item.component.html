@@ -1,0 +1,40 @@
+<div>
+  <form #newItemForm="ngForm" (ngSubmit)="save(newItemForm)">
+    <div>
+      <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)">
+        <div *ngIf="itemName.errors">
+          item name is required
+        </div>
+      </div>
+      <label>item name
+        <input required minlength="1" #itemName="ngModel" placeholder="to do item..." name="itemName" [(ngModel)]="newItem.itemName">
+      </label>
+      <br>
+      <label>description
+        <input #description="ngModel" placeholder="description" name="description" [(ngModel)]="newItem.description">
+      </label>
+      <br>
+      <label>subject
+        <input #subject="ngModel" placeholder="subject" name="subject" [(ngModel)]="newItem.subject">
+      </label>
+      <br>
+      <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)">
+        <div *ngIf="itemName.errors">
+          item name is required
+        </div>
+      </div>
+      <label>status
+        <input #status="ngModel" placeholder="status" name="status" [(ngModel)]="newItem.status">
+      </label>
+      <br>
+      <label>goal date
+        <input type="date" #goalDate="ngModel" placeholder="goal date" name="goalDate" [(ngModel)]="newItem.goalDate">
+      </label>
+      <br>
+      <label>file
+        <input type="file" name="file" (change)="handleFileInput($event.target.files)">
+      </label>
+    </div>
+    <button type="submit" [disabled]="newItemForm.invalid">save</button>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 <div *ngIf="item && !editMode">
-  <h3>{{ item.subject }}</h3>
+  <h3>{{ item.itemName }}</h3>
   <div>description: {{ item.description }}</div>
-  <div>list: {{ item.list }}</div>
+  <div>subject: {{ item.subject }}</div>
   <div>status: {{ item.status }}</div>
   <div>goalDate: {{ item.goalDate | date: "MM/dd/yyyy" }}</div>
   <div>createdAt: {{ item.createdAt | date: "MM/dd/yyyy" }}</div>
@@ -15,14 +15,14 @@
 
 <form *ngIf="editMode" #form="ngForm" (ngSubmit)="submitForm(form.value)">
   <div class="form-group">
-    <label for="subject">subject: </label>
-    <input name="subject" class="form-control" [ngModel]="item.subject">
+    <label for="itemName">item name: </label>
+    <input name="itemName" class="form-control" [ngModel]="item.itemName">
     <br>
     <label for="description">description: </label>
     <input name="description" class="form-control" [ngModel]="item.description">
     <br>
-    <label for="list">list: </label>
-    <input name="list" class="form-control" [ngModel]="item.list">
+    <label for="subject">subject: </label>
+    <input name="subject" class="form-control" [ngModel]="item.subject">
     <br>
     <label for="status">status: </label>
     <input name="status" class="form-control" [ngModel]="item.status">
