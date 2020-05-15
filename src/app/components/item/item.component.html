@@ -1,10 +1,10 @@
-<div *ngIf="item" class="card">
-  <div class="card-body">
-      <a routerLink="/item/{{item._id}}">
-        <div>itemName: {{ item.itemName }}</div>
-        <div>status: {{ item.status }}</div>
-        <div>subject: {{ item.subject }}</div>
-      </a>
-      <button (click)="deleteItem(item._id)">delete</button>
-  </div>
-</div>
+<mat-list-item>
+  <a routerLink="/item/{{item._id}}">
+    <div mat-line>itemName: {{ item.itemName }}</div>
+    <div mat-line>status: {{ item.status }}</div>
+    <div mat-line>subject: {{ item.subject }}</div>
+  </a>
+  <mat-icon matListIcon>delete</mat-icon>
+  <button (click)="deleteItem(item._id)">delete</button>
+</mat-list-item>
+<mat-divider></mat-divider>

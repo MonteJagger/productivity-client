@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +26,9 @@ import { AddItemComponent } from './components/add-item/add-item.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,9 @@
+@import "styles";
 img {
   max-width: 200px;
   max-height: 200px;
+}
+
+a {
+  color: mat-color($productivity-client-warn);
 }
