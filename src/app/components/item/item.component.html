@@ -5,7 +5,9 @@
     <div mat-line>subject: {{ item.subject }}</div>
   </a>
   <div>
-    <button mat-button (click)="deleteItem(item._id)"><mat-icon matListIcon (click)="deleteItem(item._id)">delete</mat-icon></button>
+    <button mat-button (click)="deleteItem(item._id)">
+      <mat-icon matListIcon (click)="deleteItem(item._id)">delete</mat-icon>
+    </button>
   </div>
   <mat-divider></mat-divider>
 </mat-list-item>

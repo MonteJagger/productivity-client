@@ -1,6 +1,13 @@
-<add-item (refreshListOutput)="updateList()"></add-item>
-<mat-divider></mat-divider>
+<!-- add new item card-->
+<mat-card>
+  <mat-card-title>add new item</mat-card-title>
+  <add-item (refreshListOutput)="updateList()"></add-item>
+</mat-card>
 
-<mat-list role="list">
-  <item *ngFor="let itemObj of itemList" [item]="itemObj" [baseUrl]="baseUrl"></item>
-</mat-list>
+<!-- task card -->
+<mat-card>
+  <mat-card-title>tasks</mat-card-title>
+  <mat-list role="list">
+    <item *ngFor="let itemObj of itemList" [item]="itemObj" [baseUrl]="baseUrl"></item>
+  </mat-list>
+</mat-card>
