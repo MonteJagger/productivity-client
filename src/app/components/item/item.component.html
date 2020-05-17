@@ -1,4 +1,4 @@
-<mat-list-item *ngIf="item">
+<mat-list-item *ngIf="item" [ngClass]="{'complete-item': isComplete}">
   <a routerLink="/item/{{item._id}}">
     <div mat-line>itemName: {{ item.itemName }}</div>
     <div mat-line>status: {{ item.status }}</div>
