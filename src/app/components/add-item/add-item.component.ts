@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemService } from 'src/app/services/item/item.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'add-item',
@@ -14,7 +15,9 @@ export class AddItemComponent implements OnInit {
     private itemService: ItemService
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newItem.status = 'not started'; // set as default
+  }
 
   handleFileInput(files) {
     this.uploadedFile = files.item(0);
@@ -28,7 +31,7 @@ export class AddItemComponent implements OnInit {
     formData.append('subject', this.newItem.subject);
     formData.append('goalDate', this.newItem.goalDate);
     formData.append('status', this.newItem.status);
-    if (this.uploadedFile) {formData.append('attachmentUrl', this.uploadedFile, this.uploadedFile.name);}
+    if (this.uploadedFile) { formData.append('attachmentUrl', this.uploadedFile, this.uploadedFile.name); }
 
 
     console.log('saving item');

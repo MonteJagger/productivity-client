@@ -1,40 +1,54 @@
 <div>
   <form #newItemForm="ngForm" (ngSubmit)="save(newItemForm)">
-    <div>
-      <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)">
-        <div *ngIf="itemName.errors">
-          item name is required
-        </div>
-      </div>
-      <label>item name
-        <input required minlength="1" #itemName="ngModel" placeholder="to do item..." name="itemName" [(ngModel)]="newItem.itemName">
-      </label>
-      <br>
-      <label>description
-        <input #description="ngModel" placeholder="description" name="description" [(ngModel)]="newItem.description">
-      </label>
-      <br>
-      <label>subject
-        <input #subject="ngModel" placeholder="subject" name="subject" [(ngModel)]="newItem.subject">
-      </label>
-      <br>
-      <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)">
-        <div *ngIf="itemName.errors">
-          item name is required
-        </div>
-      </div>
-      <label>status
-        <input #status="ngModel" placeholder="status" name="status" [(ngModel)]="newItem.status">
-      </label>
-      <br>
-      <label>goal date
-        <input type="date" #goalDate="ngModel" placeholder="goal date" name="goalDate" [(ngModel)]="newItem.goalDate">
-      </label>
-      <br>
-      <label>file
-        <input type="file" name="file" (change)="handleFileInput($event.target.files)">
-      </label>
-    </div>
-    <button type="submit" [disabled]="newItemForm.invalid">save</button>
+    <!-- item name -->
+    <mat-form-field appearance="fill">
+      <mat-label>item</mat-label>
+      <input matInput required minlength="1" #itemName="ngModel" name="itemName" [(ngModel)]="newItem.itemName">
+    </mat-form-field>
+    <br>
+
+    <!-- description -->
+    <mat-form-field appearance="fill">
+      <mat-label>description</mat-label>
+      <textarea matInput #description="ngModel" name="description" [(ngModel)]="newItem.description"></textarea>
+    </mat-form-field>
+    <br>
+
+    <!-- subject -->
+    <mat-form-field appearance="fill">
+      <mat-label>subject</mat-label>
+      <input matInput #subject="ngModel" name="subject" [(ngModel)]="newItem.subject">
+    </mat-form-field>
+    <br>
+
+    <!-- status -->
+    <mat-form-field>
+      <mat-label>select status</mat-label>
+      <mat-select #status="ngModel" name="status" [(ngModel)]="newItem.status">
+        <mat-option value="not started">not started</mat-option>
+        <mat-option value="in progress">in progress</mat-option>
+        <mat-option value="complete">complete</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <!-- goal date -->
+    <mat-form-field>
+      <mat-label>goal date</mat-label>
+      <input matInput [matDatepicker]="goalDate" name="goalDate" [(ngModel)]="newItem.goalDate">
+      <mat-datepicker-toggle matSuffix [for]="goalDate"></mat-datepicker-toggle>
+      <mat-datepicker #goalDate></mat-datepicker>
+    </mat-form-field>
+    <br>
+
+    <!-- file attachment -->
+    <label>
+      <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+      <input hidden type="file" name="file" (change)="handleFileInput($event.target.files)" #fileInput>
+      <!-- <input type="file" name="file" (change)="handleFileInput($event.target.files)"> -->
+    </label>
+    <br>
+
+    <button mat-raised-button color="primary" type="submit">save</button>
   </form>
 </div>
