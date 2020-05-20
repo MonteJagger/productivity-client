@@ -8,6 +8,14 @@
 <mat-card>
   <mat-card-title>tasks</mat-card-title>
   <mat-list role="list">
-    <item *ngFor="let itemObj of itemList" [item]="itemObj" [baseUrl]="baseUrl"></item>
+    <item *ngFor="let itemObj of itemList" [item]="itemObj" [baseUrl]="baseUrl" [isComplete]="false"></item>
+  </mat-list>
+</mat-card>
+
+<!-- completed card -->
+<mat-card>
+  <mat-card-title>complete</mat-card-title>
+  <mat-list role="list">
+    <item *ngFor="let itemObj of itemList" [item]="itemObj" [baseUrl]="baseUrl" [isComplete]="true"></item>
   </mat-list>
 </mat-card>
